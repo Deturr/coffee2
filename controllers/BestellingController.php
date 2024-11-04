@@ -7,6 +7,8 @@ use app\models\BestellingSearcher;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Medewerker;
+use Yii;
 
 /**
  * BestellingController implements the CRUD actions for Bestelling model.
@@ -68,17 +70,15 @@ class BestellingController extends Controller
     public function actionCreate()
     {
         $model = new Bestelling();
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        } else {
-            $model->loadDefaultValues();
+        $medewerkers = Medewerker::find()->all();
+    
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
-
+    
         return $this->render('create', [
             'model' => $model,
+            'medewerkers' => $medewerkers
         ]);
     }
 
