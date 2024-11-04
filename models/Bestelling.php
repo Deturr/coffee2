@@ -30,7 +30,6 @@ class Bestelling extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'medewerker_id', 'naam', 'menu_id', 'status'], 'required'],
             [['id', 'medewerker_id', 'menu_id'], 'integer'],
             [['status'], 'string'],
             [['timestamp'], 'safe'],

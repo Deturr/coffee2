@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\models\Medewerker;
+use app\models\Menu;
 use Yii;
 
 /**
@@ -71,6 +72,7 @@ class BestellingController extends Controller
     {
         $model = new Bestelling();
         $medewerkers = Medewerker::find()->all();
+        $menu = Menu::find()->all();
     
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -78,7 +80,8 @@ class BestellingController extends Controller
     
         return $this->render('create', [
             'model' => $model,
-            'medewerkers' => $medewerkers
+            'medewerkers' => $medewerkers,
+            'menu' => $menu,
         ]);
     }
 
