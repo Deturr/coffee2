@@ -14,6 +14,7 @@ use yii\helpers\ArrayHelper;
 $this->title = 'Bestellings';
 $this->params['breadcrumbs'][] = $this->title;
 $medewerkerList = ArrayHelper::map($medewerkers,'id','naam');
+$menuList = ArrayHelper::map($menu,'id','naam');
 ?>
 <div class="bestelling-index">
 
@@ -39,7 +40,12 @@ $medewerkerList = ArrayHelper::map($medewerkers,'id','naam');
                 'value'     => 'medewerkers.naam'
             ],
             'naam',
-            'menu_id',
+            [
+                'attribute' => 'menu_id',
+                  'label'     => 'Bestelling',
+                'filter'    => $menuList,
+                'value'     => 'menu.naam'
+            ],
             'status',
             //'timestamp',
             [

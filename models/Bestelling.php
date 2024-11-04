@@ -40,6 +40,10 @@ public function getMedewerkers()
 {
    return $this->hasOne(Medewerker::className(), ['id' => 'medewerker_id']);
 }
+public function getMenu()
+{
+   return $this->hasOne(Menu::className(), ['id' => 'menu_id']);
+}
     /**
      * {@inheritdoc}
      */

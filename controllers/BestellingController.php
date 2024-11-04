@@ -44,11 +44,13 @@ class BestellingController extends Controller
         $searchModel = new BestellingSearcher();
         $dataProvider = $searchModel->search($this->request->queryParams);
         $medewerkers = Medewerker::find()->all();
+        $menu = Menu::find()->all();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'medewerkers' => $medewerkers,
+            'menu' => $menu,
         ]);
     }
 
