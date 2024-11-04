@@ -30,7 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'medewerker_id',
+            [
+                'attribute' => 'medewerker_id',
+                  'label'     => 'Medewerker',
+                //'filter'    => $medewerkerList,
+                'value'     => 'medewerkers.naam'
+            ],
             'naam',
             'menu_id',
             'status',

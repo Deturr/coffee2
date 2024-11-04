@@ -36,7 +36,10 @@ class Bestelling extends \yii\db\ActiveRecord
             [['naam'], 'string', 'max' => 200],
         ];
     }
-
+public function getMedewerkers()
+{
+   return $this->hasOne(Medewerker::className(), ['id' => 'medewerker_id']);
+}
     /**
      * {@inheritdoc}
      */
