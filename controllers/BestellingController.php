@@ -95,6 +95,8 @@ class BestellingController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $medewerkers = Medewerker::find()->all();
+        $menu = Menu::find()->all();
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -102,6 +104,8 @@ class BestellingController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'medewerkers' => $medewerkers,
+            'menu' => $menu,
         ]);
     }
 
