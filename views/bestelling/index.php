@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
 
 /** @var yii\web\View $this */
 /** @var app\models\BestellingSearcher $searchModel */
@@ -12,6 +13,7 @@ use yii\grid\GridView;
 
 $this->title = 'Bestellings';
 $this->params['breadcrumbs'][] = $this->title;
+$medewerkerList = ArrayHelper::map($medewerkers,'id','naam');
 ?>
 <div class="bestelling-index">
 
@@ -33,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'medewerker_id',
                   'label'     => 'Medewerker',
-                //'filter'    => $medewerkerList,
+                'filter'    => $medewerkerList,
                 'value'     => 'medewerkers.naam'
             ],
             'naam',
